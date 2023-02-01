@@ -33,6 +33,7 @@ namespace PatikaHomework1
             });
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllers();
         }

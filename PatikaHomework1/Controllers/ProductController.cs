@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using PatikaHomework1.Attributes;
 using PatikaHomework1.Interfaces;
 using PatikaHomework1.Models;
 
@@ -7,6 +9,8 @@ namespace PatikaHomework1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AuthorizeUser]
+
     public class ProductsController : ControllerBase
     {
         // IProductRepository interface'inden örnek oluþturuldu
