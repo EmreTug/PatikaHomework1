@@ -8,3 +8,4 @@
 1.02.2023 23:21:52: GET /api/Test
 1.02.2023 23:22:17: GET /api/Test
 1.02.2023 23:24:07: GET /api/Test
+2.02.2023 01:18:32: GET /api/Products

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using PatikaHomework1.Attributes;
 using PatikaHomework1.Interfaces;
 using PatikaHomework1.Models;
+using PatikaHomework1.ViewModels;
 
 namespace PatikaHomework1.Controllers
 {
@@ -58,7 +59,7 @@ namespace PatikaHomework1.Controllers
 
         // POST: api/products
         [HttpPost]
-        public IActionResult AddProduct([FromBody] Product product)
+        public IActionResult AddProduct([FromBody] ProductModel product)
         {
             // Eðer model geçerli deðilse, kullanýcýya hatalý request dön
             if (!ModelState.IsValid)
@@ -68,13 +69,13 @@ namespace PatikaHomework1.Controllers
             _repository.AddProduct(product);
 
             // Baþarýlý bir þekilde ekleme iþleminden sonra, eklenen ürüne ait bilgileri döndür
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction("GetProduct", product);
         }
 
         // PUT: api/products/5
         // Ürünü güncelleme
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductModel product)
         {
             // Eðer model geçerli deðilse 400 Bad Request döndür
             if (!ModelState.IsValid)
@@ -89,7 +90,6 @@ namespace PatikaHomework1.Controllers
             // Asenkron bir þekilde 1 saniye bekle
             await Task.Delay(1000);
             // Ürün id'sini güncelle
-            product.Id = id;
 
             // Ürünü repository'de güncelle
             _repository.UpdateProduct(product);
@@ -101,7 +101,7 @@ namespace PatikaHomework1.Controllers
         // PATCH: api/products/5
         // Ürünü kýsmi olarak güncelleme
         [HttpPatch("{id}")]
-        public IActionResult UpdateProductPartial(int id, [FromBody] JsonPatchDocument<Product> productPatch)
+        public IActionResult UpdateProductPartial(int id, [FromBody] JsonPatchDocument<ProductModel> productPatch)
         {
             // Eðer model geçerli deðilse 400 Bad Request döndür
             if (!ModelState.IsValid)
