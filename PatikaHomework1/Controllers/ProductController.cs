@@ -38,7 +38,7 @@ namespace PatikaHomework1.Controllers
             // Ürünler bulunursa Ok(products) döndürülür
             return Ok(products);
         }
-
+   
 
         // GET: api/products/5
         // Verilen id deðerine sahip ürün çaðrýlýr

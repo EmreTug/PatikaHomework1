@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using PatikaHomework1.Interfaces;
+using PatikaHomework1.Middleware;
 using PatikaHomework1.Models;
 using PatikaHomework1.Repositories;
 
@@ -49,6 +50,8 @@ namespace PatikaHomework1
                 });
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMiddleware<LoggingMiddleware>();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseHttpsRedirection();
 
